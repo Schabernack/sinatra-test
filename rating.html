@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Beschreibung der Seite</title>
+</head>
+<body>
+	   <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	   <script type="text/javascript">
+	   // senden der in der dropdown box ausgewählten werte
+	   $(function() {
+  			$("#senden").click(function(){
+  				$.post("rating", { rating: $("#selectbox").val()} );
+	   		})
+		});
+	   	
+	   	// empfange rating vom server und setze den wert der dropdownbox entsprechend
+	   	$(function(){
+	   		$.getJSON("rating", 
+		          function(data) {
+		 			$("#selectbox").val(data.rating);    
+		          })
+	   	})
+
+	   </script>
+
+	   <select id="selectbox">
+		   	<option>1</option>
+		   	<option>2</option>
+		   	<option>3</option>
+		   	<option>4</option>
+		   	<option>5</option>
+		</select>
+
+		<div id="senden">SENDEN </div>
+		<div id="update-div"/>
+</body>
+</html>
